@@ -1,2 +1,2 @@
 # EXPRESS-CRUD-Routing
-Basic CRUD routing using the ExpressJs library
+Basic routing using the ExpressJs library with CRUD functionalities
