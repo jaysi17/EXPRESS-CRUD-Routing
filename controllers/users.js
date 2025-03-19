@@ -15,17 +15,20 @@ export const getUsers = (req, res) => {
 
 export const getUser = (req, res) => {
     const {id} = req.params;
-    const foundUser = users.find((users) => user.id === id);
+    const foundUser = users.find((users) => users.id === id);
+    res.send(foundUser);
 }
 
 export const deleteUser = (req, res) => {
     const {id} = req.params;
-    const foundUser = users.find((users) => user.id === id);
+    const foundUser = users.find((users) => users.id === id);
+    users.splice(foundUser, 1)
+    res.send(`User with an ID of ${id} has been deleted.`)
 }
 
 export const patchUser = (req, res) => {
     const {id} = req.params;
-    const {firstName, lastName, age} = req.body;
+    const {firstName, lastName, age, username, description, price} = req.body;
 
     const user = users.find((user) => user.id === id); 
 
@@ -42,6 +45,17 @@ export const patchUser = (req, res) => {
         user.age = age;
     }
 
+    if (username) {
+        user.username = username;
+    }
+
+    if (description) {
+        user.description = description;
+    }
+
+    if (price) {
+        user.price = price;
+    }
     res.send(`User with the ID ${id} has been updated.`)
 }
 
